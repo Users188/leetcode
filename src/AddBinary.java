@@ -24,6 +24,7 @@ public class AddBinary {
             int digitB = j >= 0 ? b.charAt(j--) - '0' : 0;
             int sum = digitA + digitB + carry;
             carry = sum >= 2 ? 1 : 0;
+            //sum = sum % 2;
             sum = sum >= 2 ? sum - 2 : sum;
             result.append(sum);
         }
