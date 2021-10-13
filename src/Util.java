@@ -1,4 +1,4 @@
-public class QuickSort {
+public class Util {
     /**
      * 快速排序
      *
@@ -56,5 +56,13 @@ public class QuickSort {
         // i的索引处为上面已确定好的基准值的位置，无需再处理
         sort(array, left, i - 1);
         sort(array, i + 1, right);
+    }
+
+    public static int array_sum(int[] ints,int left,int right){
+        int sum=0;
+        for (int i = left; i <= right; i++) {
+            sum+=ints[i];
+        }
+        return sum;
     }
 }
