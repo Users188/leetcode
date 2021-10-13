@@ -55,7 +55,8 @@ public class FindMaxLength {
     public int findMaxLength(int[] nums){
         //前缀和
         //trick:将0全部转换为-1，则子数组和为0时0和1数量相等。简化计算
-        //利用上述技巧，可以得preSum[j]-preSum[i]=0,即preSum[j]=preSum[i](i<j)
+        //利用上述技巧，可以得子数组（i到j）满足preSum[j]-preSum[i]=0,即preSum[j]=preSum[i](i<j)时，符合题意
+        //再求最大的子数组长度即可
         if (nums==null||nums.length<2)
             return 0;
         HashMap<Integer,Integer> preSums = new HashMap<>();
@@ -64,6 +65,7 @@ public class FindMaxLength {
                 nums[i]=-1;
         }
         int maxlen=0,preSum=0;
+        //空集的前缀和为0，下标为-1
         preSums.put(0,-1);
         for (int i=0;i<nums.length;i++){
             preSum+=nums[i];
