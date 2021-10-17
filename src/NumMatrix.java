@@ -12,7 +12,7 @@ public class NumMatrix {
             preSums=new int[rows][cols+1];
             for (int i = 0; i <rows; i++) {
                 for (int j = 0; j <cols; j++) {
-                    //初始化后二维数组用0填充
+                    //preSum[0][j]=0
                     preSums[i][j+1]=preSums[i][j]+matrix[i][j];
                 }
             }
