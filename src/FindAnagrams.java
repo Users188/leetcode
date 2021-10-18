@@ -21,6 +21,7 @@ public class FindAnagrams {
         if(Arrays.equals(chars,sub_chars))
             ans.add(0);
         int left=0,right=p.length();
+        //只改变边界更新窗口值，将符合条件的加入ans列表
         while (right<s.length()){
             sub_chars[s.charAt(left++)-'a']--;
             sub_chars[s.charAt(right++)-'a']++;
