@@ -9,5 +9,7 @@ public class ATest {
         System.out.println(1<<4);
         System.out.println(getType('1'-'0'));
         System.out.println(Arrays.toString(new int[5]));
+        String s="";
+        System.out.println(s.length());
     }
 }
