@@ -10,7 +10,7 @@ public class FindAnagrams {
         List<Integer> ans=new ArrayList<>();
         if (s.length()<p.length())
             return ans;
-       int[] chars=new int[26];
+        int[] chars=new int[26];
         int[] sub_chars=new int[26];
         for (int i = 0; i < p.length(); i++) {
             char c=p.charAt(i);
