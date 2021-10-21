@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /*leetcode:有效的回文*/
 /*给定一个字符串 s ，验证 s 是否是 回文串 ，只考虑字母和数字字符，可以忽略字母的大小写。
@@ -59,6 +61,4 @@ public class IsPalindrome {
         }
         return String.copyValueOf(chars);
     }
-
-
 }
