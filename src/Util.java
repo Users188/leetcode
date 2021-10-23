@@ -58,19 +58,19 @@ public class Util {
         sort(array, i + 1, right);
     }
 
-    public static int array_sum(int[] ints,int left,int right){
-        int sum=0;
+    public static int array_sum(int[] ints, int left, int right) {
+        int sum = 0;
         for (int i = left; i <= right; i++) {
-            sum+=ints[i];
+            sum += ints[i];
         }
         return sum;
     }
 
-    public static int Fibonacci(int n){
-        if (n==1)
+    public static int Fibonacci(int n) {
+        if (n == 1)
             return 1;
-        if (n==2)
+        if (n == 2)
             return 2;
-        return Fibonacci(n-1)+Fibonacci(n-2);
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
     }
 }

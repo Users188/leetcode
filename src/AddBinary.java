@@ -1,13 +1,17 @@
 /*leetcode:二进制加法*/
 public class AddBinary {
-    public String addBinary(String a,String b){
-
-        Integer ia=Integer.parseInt(a,2);
-        Integer ib=Integer.parseInt(b,2);
-
-        return Integer.toBinaryString(ia+ib);
+    public static void main(String[] args) {
+        System.out.println(new AddBinary().addBinary_modified(
+                "101", "101"));
     }
 
+    public String addBinary(String a, String b) {
+
+        Integer ia = Integer.parseInt(a, 2);
+        Integer ib = Integer.parseInt(b, 2);
+
+        return Integer.toBinaryString(ia + ib);
+    }
 
     public String addBinary_modified(String a, String b) {
         /*双指针, 让两个数的末位对齐, 两个指针 i, j均从各自字符串的末尾开始走。
@@ -32,10 +36,5 @@ public class AddBinary {
             result.append(1);
         }
         return result.reverse().toString();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new AddBinary().addBinary_modified(
-                "101","101"));
     }
 }

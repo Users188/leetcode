@@ -3,7 +3,7 @@ import java.util.*;
 /*leetcode:只出现一次的数字*/
 public class SingleNumber {
     //nums 中，除某个元素仅出现 一次 外，其余每个元素都恰出现三次
-    public int singleNumber_primitive(int []nums){
+    public int singleNumber_primitive(int[] nums) {
         //使用排序
 //        Util.quickSort(nums);
         Arrays.sort(nums);
@@ -20,37 +20,37 @@ public class SingleNumber {
                 return nums[end];
         }
         return nums[begin];*/
-        int left=0,right=2;
-        while (right<nums.length){
-            if (nums[left]!=nums[right])
+        int left = 0, right = 2;
+        while (right < nums.length) {
+            if (nums[left] != nums[right])
                 return nums[left];
-            left+=3;
-            right=left+2;
+            left += 3;
+            right = left + 2;
         }
         return nums[left];
     }
 
-    public int singleNumber_modified(int []nums){
+    public int singleNumber_modified(int[] nums) {
         //利用hashmap
         HashMap<Integer, Integer> hashMap = new HashMap<>();
         for (int num : nums) {
             if (!hashMap.containsKey(num))
                 hashMap.put(num, 1);
-            else{
+            else {
                 int occurrences = hashMap.get(num);
-                hashMap.put(num,++occurrences);
+                hashMap.put(num, ++occurrences);
             }
         }
         //通过map.entrySet()获得键值对，性能较高
-        for (Map.Entry<Integer,Integer> entry: hashMap.entrySet()){
-            if (entry.getValue()==1)
+        for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
+            if (entry.getValue() == 1)
                 return entry.getKey();
         }
         return 0;
     }
 
 
-    public  int singleNumber_ultimate(int []nums){
+    public int singleNumber_ultimate(int[] nums) {
         //位运算
         /*int ret = 0;
         for (int i = 0; i < 32; i++) {
@@ -66,26 +66,26 @@ public class SingleNumber {
 
         //有限状态机,三进制
         int ones = 0, twos = 0;
-        for(int num : nums){
+        for (int num : nums) {
             ones = ones ^ num & ~twos;
             twos = twos ^ num & ~ones;
         }
         return ones;
     }
 
-    public int singleNumber(int []nums){
+    public int singleNumber(int[] nums) {
         //集合+数学运算
         Set<Integer> set = new HashSet<>();
-        int sum =0,sum3=0,res=0;
-        for (int num:nums){
-            sum+=num;
+        int sum = 0, sum3 = 0, res = 0;
+        for (int num : nums) {
+            sum += num;
             set.add(num);
         }
-        for (Integer item:set){
-            sum3+=item;
+        for (Integer item : set) {
+            sum3 += item;
         }
         //容易越界
-        return res =sum - (sum - sum3)*3/2;
+        return res = sum - (sum - sum3) * 3 / 2;
     }
 
 }

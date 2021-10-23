@@ -16,7 +16,8 @@ public class ValidPalindrome {
         if (delete > 1) {
             //如果从右边删没有得到结果，从左边开始删
             delete = 0;
-            first = 0; last = s.length() - 1;
+            first = 0;
+            last = s.length() - 1;
             while (first < last && delete <= 1) {
                 if (s.charAt(first) == s.charAt(last))
                     last--;

@@ -1,6 +1,6 @@
 package DesignPatterns.FactoryPattern;
 
-public class Circle implements Shape{
+public class Circle implements Shape {
 
     @Override
     public void draw() {

@@ -1,8 +1,8 @@
 package DesignPatterns.FactoryPattern;
 
 public class ShapeFactory {
-    public Shape getShape(String shapeType){
-        if (shapeType==null)
+    public Shape getShape(String shapeType) {
+        if (shapeType == null)
             return null;
         if (shapeType.equals("circle"))
             return new Circle();
