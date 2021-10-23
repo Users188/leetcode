@@ -5,6 +5,7 @@ out/
 *.iml
 !.gitignore
 test/ATest.java
+
 # Compiled class file
 *.class
 
