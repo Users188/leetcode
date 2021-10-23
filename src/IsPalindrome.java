@@ -7,9 +7,8 @@ import java.util.Set;
 本题中，将空字符串定义为有效的 回文串 。
 */
 public class IsPalindrome {
-    public boolean isPalindrome(String s){
+    public boolean isPalindrome_recursion(String s){
         //递归解法
-        s=simplifiedString(s);
         int len=s.length();
         if (len==0||len==1)
             return true;
@@ -19,8 +18,12 @@ public class IsPalindrome {
     }
 
     public boolean isPalindrome_ultimate(String s){
-        //双指针
         s=simplifiedString(s);
+        return isPalindrome(s);
+    }
+
+    public boolean isPalindrome(String s) {
+        //双指针
         int left=0,right=s.length()-1;
         while (left<right){
             if(s.charAt(left)==s.charAt(right)){
