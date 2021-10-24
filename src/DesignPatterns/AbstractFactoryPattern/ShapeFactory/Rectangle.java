@@ -1,4 +1,4 @@
-package DesignPatterns.FactoryPattern;
+package DesignPatterns.AbstractFactoryPattern.ShapeFactory;
 
 public class Rectangle implements Shape {
 

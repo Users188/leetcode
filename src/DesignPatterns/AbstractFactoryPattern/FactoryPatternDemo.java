@@ -1,5 +1,9 @@
-package DesignPatterns.FactoryPattern;
+package DesignPatterns.AbstractFactoryPattern;
 
+import DesignPatterns.AbstractFactoryPattern.ShapeFactory.Shape;
+import DesignPatterns.AbstractFactoryPattern.ShapeFactory.ShapeFactory;
+
+//工厂模式
 public class FactoryPatternDemo {
     public static void main(String[] args) {
         //创建工厂实例
