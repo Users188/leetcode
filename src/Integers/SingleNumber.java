@@ -1,3 +1,5 @@
+package Integers;
+
 import java.util.*;
 
 /*leetcode:只出现一次的数字*/
@@ -5,7 +7,7 @@ public class SingleNumber {
     //nums 中，除某个元素仅出现 一次 外，其余每个元素都恰出现三次
     public int singleNumber_primitive(int[] nums) {
         //使用排序
-//        Util.quickSort(nums);
+//        Arrays.Util.quickSort(nums);
         Arrays.sort(nums);
 //        System.out.println(Arrays.toString(nums));
         /*int begin =0,end= nums.length-1;

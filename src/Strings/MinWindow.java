@@ -1,3 +1,5 @@
+package Strings;
+
 import java.util.HashMap;
 
 /*leetcode:含有所有字符的最短字符串*/

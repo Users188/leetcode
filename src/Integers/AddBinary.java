@@ -1,3 +1,5 @@
+package Integers;
+
 /*leetcode:二进制加法*/
 public class AddBinary {
     public static void main(String[] args) {

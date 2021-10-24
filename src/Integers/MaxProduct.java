@@ -1,3 +1,5 @@
+package Integers;
+
 /*leetcode:单词长度的最大乘积*/
 public class MaxProduct {
     public int maxProduct_primitive(String[] words) {

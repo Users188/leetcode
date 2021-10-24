@@ -1,3 +1,5 @@
+package Arrays;
+
 import java.util.HashMap;
 
 /*leetcode:和为k的子数组*/

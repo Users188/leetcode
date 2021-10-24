@@ -1,4 +1,4 @@
-/*leetcode:左右两边子数组的和相等*/
+package Arrays;/*leetcode:左右两边子数组的和相等*/
 
 public class PivotIndex {
     public int pivotIndex_primitive(int[] nums) {

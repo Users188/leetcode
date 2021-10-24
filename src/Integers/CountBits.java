@@ -1,3 +1,5 @@
+package Integers;
+
 /*leetcode:前n个数字二进制中1的个数*/
 public class CountBits {
 

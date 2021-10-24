@@ -1,4 +1,4 @@
-/*leetcode:三数之和为0*/
+package Arrays;/*leetcode:三数之和为0*/
 
 import java.util.*;
 

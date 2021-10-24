@@ -1,3 +1,5 @@
+package Strings;
+
 /*leetcode:最多删除一个字符获得回文串*/
 /*s由小写字母组成*/
 public class ValidPalindrome {

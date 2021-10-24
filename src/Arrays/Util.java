@@ -1,3 +1,5 @@
+package Arrays;
+
 public class Util {
     /**
      * 快速排序

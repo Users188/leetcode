@@ -1,3 +1,5 @@
+package Integers;
+
 /*leetcode:整数除法*/
 public class Divide {
     // 因为将 -2147483648 转成正数会越界，但是将 2147483647 转成负数，则不会

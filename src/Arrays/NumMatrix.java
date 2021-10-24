@@ -1,3 +1,5 @@
+package Arrays;
+
 /*leetcode:二维子矩阵的和*/
 /*最佳解法：利用二维前缀和（大矩阵减去小矩阵）*/
 public class NumMatrix {
