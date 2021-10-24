@@ -2,23 +2,23 @@
 /*给定一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。*/
 
 //转化题意：删除相对于最后一个结点第n位的结点的后继结点
+class ListNode{
+    int value;
+    ListNode next;
 
-public class RemoveNthFromEnd {
-    static class ListNode{
-        int value;
-        ListNode next;
+    ListNode() {
 
-        ListNode() {
-
-        }
-        ListNode(int value){
-            this.value=value;
-        }
-        ListNode(int value,ListNode next){
-            this.value=value;
-            this.next=next;
-        }
     }
+    ListNode(int value){
+        this.value=value;
+    }
+    ListNode(int value,ListNode next){
+        this.value=value;
+        this.next=next;
+    }
+}
+public class RemoveNthFromEnd {
+
     public ListNode removeNthFromEnd_primitive(ListNode head,int n){
         ListNode temp=head;
         int length=1;
