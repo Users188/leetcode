@@ -1,15 +1,15 @@
 package LinkedLists;
 
 public class ListNode {
-    int value;
+    int val;
     ListNode next;
 
-    public int getValue() {
-        return value;
+    public int getVal() {
+        return val;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setVal(int val) {
+        this.val = val;
     }
 
     public ListNode getNext() {
@@ -25,12 +25,12 @@ public class ListNode {
 
     }
 
-    public ListNode(int value) {
-        this.value = value;
+    public ListNode(int val) {
+        this.val = val;
     }
 
-    public ListNode(int value, ListNode next) {
-        this.value = value;
+    public ListNode(int val, ListNode next) {
+        this.val = val;
         this.next = next;
     }
 }

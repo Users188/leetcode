@@ -14,7 +14,7 @@ public class ReverseListTest {
     }
     public void printLinkedLists(ListNode head){
         while (head!=null){
-            System.out.print(head.getValue()+" ");
+            System.out.print(head.getVal()+" ");
             head=head.getNext();
         }
     }
