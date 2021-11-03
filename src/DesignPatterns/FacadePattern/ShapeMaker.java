@@ -1,5 +1,9 @@
 package DesignPatterns.FacadePattern;
 
+import DesignPatterns.FacadePattern.Shapes.Circle;
+import DesignPatterns.FacadePattern.Shapes.Rectangle;
+import DesignPatterns.FacadePattern.Shapes.Square;
+
 public class ShapeMaker {
     private Shape circle;
     private Shape square;
