@@ -87,10 +87,40 @@ public class TreeValue {
         //由于是从右边先开始遍历，进入到该层第一个的节点就是能最右侧的节点
         if (depth == rightSideView.size())
             rightSideView.add(root.val);
+//        System.out.println(root.val+" "+depth);
         //优先右侧
         dfs(rightSideView, root.right, depth + 1);
         dfs(rightSideView, root.left, depth + 1);
 
     }
 
+    /*leetcode:从从根节点到叶节点的路径数字之和*/
+    public int sumNumbers(TreeNode root) {
+        Queue<TreeNode> levelNodes = new LinkedList<>();
+        Queue<StringBuilder> numberString = new LinkedList<>();
+        levelNodes.add(root);
+        numberString.add(new StringBuilder().append(root.val));
+        Integer sum = 0;
+        while (!levelNodes.isEmpty()) {
+
+            TreeNode head = levelNodes.poll();
+            StringBuilder number = numberString.poll();
+
+            if (head.left == null && head.right == null) {
+                sum += Integer.valueOf(number.toString());
+            } else {
+                if (head.left != null) {
+                    levelNodes.add(head.left);
+                    StringBuilder num = new StringBuilder(number.toString());
+                    numberString.add(num.append(head.left.val));
+                }
+                if (head.right != null) {
+                    levelNodes.add(head.right);
+                    StringBuilder num = new StringBuilder(number.toString());
+                    numberString.add(num.append(head.right.val));
+                }
+            }
+        }
+        return sum;
+    }
 }
