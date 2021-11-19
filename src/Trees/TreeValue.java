@@ -123,4 +123,18 @@ public class TreeValue {
         }
         return sum;
     }
+
+    public int sumNumbers_dfs(TreeNode root) {
+        return dfs(root, 0);
+    }
+
+    private int dfs(TreeNode root, int preSum) {
+        if (root == null)
+            return 0;
+        preSum = preSum * 10 + root.val;
+        if (root.left == null && root.right == null)
+            return preSum;
+        else
+            return dfs(root.left, preSum) + dfs(root.right, preSum);
+    }
 }
