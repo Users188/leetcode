@@ -1,9 +1,6 @@
 package Trees;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class TreeValue {
     /*leetcode:二叉树每层的最大值*/
@@ -136,5 +133,52 @@ public class TreeValue {
             return preSum;
         else
             return dfs(root.left, preSum) + dfs(root.right, preSum);
+    }
+
+    /*leetcode:向下的路径节点之和*/
+    /*给定一个二叉树的根节点 root，和一个整数 targetSum ，
+    求该二叉树里节点值之和等于 targetSum 的 路径 的数目。
+    路径 不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。*/
+    //将每个节点的符合targetSum的路径数目相加
+    public int pathSum(TreeNode root,int targetSum){
+        if (root==null)
+            return 0;
+        int count=0;
+        count+= countByPreSum(root,targetSum,0);
+        count+=pathSum(root.left,targetSum);
+        count+=pathSum(root.right,targetSum);
+        return count;
+    }
+
+    //计算从当前节点到各个节点符合targetSum的路径数
+    //此处sum变量可以去掉，改为递减逻辑（targetSum-=rootVal）
+    private int countByPreSum(TreeNode root, int targetSum, int sum){
+        if (root==null)
+            return 0;
+        int count=0;
+        sum+=root.val;
+        if (sum==targetSum)
+            count++;
+        count+= countByPreSum(root.left,targetSum,sum);
+        count+= countByPreSum(root.right,targetSum,sum);
+        return count;
+    }
+
+    //map<key:前缀和,value:该和出现的次数>
+    private int countByPreSum(TreeNode root, int targetSum, int sum, HashMap<Integer,Integer> preSum){
+        if (root==null)
+            return 0;
+        int count=0;
+        sum+=root.val;
+
+        count=preSum.getOrDefault(sum-targetSum,0);
+        preSum.put(sum,preSum.getOrDefault(sum,0)+1);
+        count+= countByPreSum(root.left,targetSum,sum,preSum);
+        count+= countByPreSum(root.right,targetSum,sum,preSum);
+        //因为dfs函数结束时程序会回到当前节点的父节点(LDR)，所以在返回父节点之前需要将当前节点值从路径中删除，即哈希表中当前路径值减1。
+        preSum.put(sum,preSum.getOrDefault(sum,0)-1);
+
+        return count;
+
     }
 }
