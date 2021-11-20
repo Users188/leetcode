@@ -181,12 +181,13 @@ public class TreeValue {
         preSum.put(sum,preSum.getOrDefault(sum,0)+1);
         count+= countByPreSum(root.left,targetSum,sum,preSum);
         count+= countByPreSum(root.right,targetSum,sum,preSum);
-        //因为dfs函数结束时程序会回到当前节点的父节点(LDR)，
+        //因为dfs函数结束时程序会回到当前节点的父节点(L->(D)->R->D)，
         // 所以在返回父节点之前需要将当前节点值从路径中删除，保证左子树和右子树的前缀和在父节点时一致
         // 即哈希表中当前路径值减1。
         preSum.put(sum,preSum.getOrDefault(sum,0)-1);
 
         return count;
-
     }
+
+
 }
