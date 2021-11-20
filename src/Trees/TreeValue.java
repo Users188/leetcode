@@ -179,15 +179,40 @@ public class TreeValue {
 
         count=preSum.getOrDefault(sum-targetSum,0);
         preSum.put(sum,preSum.getOrDefault(sum,0)+1);
-        count+= countByPreSum(root.left,targetSum,sum,preSum);
-        count+= countByPreSum(root.right,targetSum,sum,preSum);
+        count += countByPreSum(root.left, targetSum, sum, preSum);
+        count += countByPreSum(root.right, targetSum, sum, preSum);
         //因为dfs函数结束时程序会回到当前节点的父节点(L->(D)->R->D)，
         // 所以在返回父节点之前需要将当前节点值从路径中删除，保证左子树和右子树的前缀和在父节点时一致
         // 即哈希表中当前路径值减1。
-        preSum.put(sum,preSum.getOrDefault(sum,0)-1);
+        preSum.put(sum, preSum.getOrDefault(sum, 0) - 1);
 
         return count;
     }
 
 
+    /*leetcode:节点之和最大的路径*/
+    /*路径 被定义为一条从树中任意节点出发，沿着节点之间的连接，达到任意节点的序列。同一个节点在一条路径序列中至多出现一次。
+    该路径 至少包含一个节点，且不一定经过根节点。
+    路径和是路径中各节点值的总和。
+    给定一个二叉树的根节点 root ，返回其 最大路径和，即所有路径上节点值之和的最大值。*/
+    public int maxPathSum(TreeNode root) {
+        int[] maxSum = new int[]{-1000};
+        maxPathSumHelper(root, maxSum);
+        return maxSum[0];
+    }
+
+    //该递归的定义：返回一个以该节点为路径端点的 路径和最大值。
+    //使用maxSum[]保存结果
+    private int maxPathSumHelper(TreeNode root, int[] maxSum) {
+        //后序遍历(LRD)
+        final int NULL_VALUE = 0;
+        if (root == null)
+            return NULL_VALUE;
+        int leftMax = Math.max(NULL_VALUE, maxPathSumHelper(root.left, maxSum));
+        int rightMax = Math.max(NULL_VALUE, maxPathSumHelper(root.right, maxSum));
+
+        maxSum[0] = Math.max(maxSum[0], root.val + leftMax + rightMax);
+
+        return root.val + Math.max(leftMax, rightMax);
+    }
 }
