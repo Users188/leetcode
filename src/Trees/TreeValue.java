@@ -97,14 +97,14 @@ public class TreeValue {
         Queue<StringBuilder> numberString = new LinkedList<>();
         levelNodes.add(root);
         numberString.add(new StringBuilder().append(root.val));
-        Integer sum = 0;
+        int sum = 0;
         while (!levelNodes.isEmpty()) {
 
             TreeNode head = levelNodes.poll();
             StringBuilder number = numberString.poll();
 
             if (head.left == null && head.right == null) {
-                sum += Integer.valueOf(number.toString());
+                sum += Integer.parseInt(number.toString());
             } else {
                 if (head.left != null) {
                     levelNodes.add(head.left);
