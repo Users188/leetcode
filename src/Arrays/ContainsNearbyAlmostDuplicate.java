@@ -1,8 +1,6 @@
 package Arrays;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 
 /*leetcode: 值和下标之差都在给定的范围内*/
 /*给你一个整数数组 nums 和两个整数k 和 t 。请你判断是否存在 两个不同下标 i 和 j，
@@ -26,6 +24,29 @@ public class ContainsNearbyAlmostDuplicate {
                     return true;
             }
 
+        }
+        return false;
+    }
+
+    //暴力解法增强版
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+        int len = nums.length;
+        int[][] nums_id = new int[len][2];
+        for (int i = 0; i < len; i++) {
+            nums_id[i] = new int[]{nums[i], i};
+        }
+        //按nums[i]的大小排序，即nums_id[][0]
+        Arrays.sort(nums_id, Comparator.comparing(o -> o[0]));
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = i + 1; j < len; j++) {
+                //由于排序过后nums[i]在nums_id[][0]中是递增的，所以差值大于t时可以退出循环
+                if ((long) nums_id[j][0] - nums_id[i][0] > t) {
+                    break;
+                }
+                if (Math.abs(nums_id[j][1] - nums_id[i][1]) <= k) {
+                    return true;
+                }
+            }
         }
         return false;
     }
