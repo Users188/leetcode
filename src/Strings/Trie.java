@@ -2,7 +2,8 @@ package Strings;
 
 /**
  * leetcode:实现前缀树
- * Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。
+ * Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。
+ * 这一数据结构有相当多的应用情景，例如自动补完和拼写检查。
  * <p>
  * 请你实现 Trie 类：
  * <p>
@@ -58,6 +59,20 @@ public class Trie {
     }
 
     /**
+     * Returns if the trie contains the word's prefix
+     */
+    public boolean searchWordPrefix(String word) {
+        TreeNode cur = root;
+        for (char c : word.toCharArray()) {
+            if (cur.isEnd) break;
+            if (cur.next[c - 'a'] == null)
+                return false;
+            cur = cur.next[c - 'a'];
+        }
+        return true;
+    }
+
+    /**
      * Returns if there is any word in the trie that starts with the given prefix.
      */
     public boolean startsWith(String prefix) {
@@ -69,6 +84,20 @@ public class Trie {
             cur = cur.next[c - 'a'];
         }
         return true;
+    }
+
+    /**
+     * Returns the shortest prefix of the String
+     */
+    public String replace(String s) {
+        TreeNode cur = root;
+        StringBuilder ret = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (cur.isEnd || cur.next[c - 'a'] == null) break;
+            cur = cur.next[c - 'a'];
+            ret.append(c);
+        }
+        return ret.toString();
     }
 
     class TreeNode {
