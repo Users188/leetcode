@@ -9,7 +9,7 @@ public class CountSubStrings {
         int count = s.length();
         for (int i = 0; i < s.length(); i++) {
             for (int j = i + 2; j <= s.length(); j++) {
-                if (new IsPalindrome().isPalindrome(s.substring(i, j)))
+                if (new Palindrome().isPalindrome(s.substring(i, j)))
                     count++;
             }
         }
