@@ -1,5 +1,7 @@
 package Strings;
 
+import java.util.List;
+
 /**
  * leetcode:实现前缀树
  * Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。
@@ -98,6 +100,19 @@ public class Trie {
             ret.append(c);
         }
         return ret.toString();
+    }
+
+    //统计字典树的叶子数目
+    public void countLeaf(TreeNode root,int level,int[] count){
+        boolean isLeaf = true;
+        for (TreeNode node : root.next) {
+            if (node !=null){
+                isLeaf = false;
+                countLeaf(node,level+1,count);
+            }
+        }
+        if (isLeaf)
+            count[0]+=level;
     }
 
     class TreeNode {
