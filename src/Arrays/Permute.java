@@ -15,7 +15,7 @@ import java.util.Set;
  * -10 <= nums[i] <= 10
  * nums 中的所有整数 互不相同
  */
-public class PerMute {
+public class Permute {
     List<List<Integer>> res;
     List<Integer> path;
     //使用一个set来存储已经访问过的num
