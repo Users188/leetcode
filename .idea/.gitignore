@@ -6,6 +6,9 @@ out/
 !.gitignore
 test/ATest.java
 
+#SourceMonitor
+.smp
+
 # Compiled class file
 *.class
 
