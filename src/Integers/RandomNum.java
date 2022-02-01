@@ -19,13 +19,13 @@ import java.util.Random;
  * 1 <= w[i] <= 10^5
  * pickIndex 将被调用不超过 10000 次
  */
-public class Solution {
+public class RandomNum {
     Random random;
     int[] w;
     int[] preSum_w;
     int sum;
 
-    public Solution(int[] w) {
+    public RandomNum(int[] w) {
         random = new Random();
         this.w = w;
         preSum_w = new int[w.length];
