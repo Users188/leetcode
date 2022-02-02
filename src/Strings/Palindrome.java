@@ -2,6 +2,7 @@ package Strings;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -97,5 +98,80 @@ public class Palindrome {
             chars[i] = res.get(i);
         }
         return String.copyValueOf(chars);
+    }
+
+    /**
+     * leetcode:分割回文子字符串
+     * 给定一个字符串 s ，请将 s 分割成一些子串，
+     * 使每个子串都是 回文串 ，返回 s 所有可能的分割方案。
+     * <p>
+     * 提示：
+     * <p>
+     * 1 <= s.length <= 16
+     * s 仅由小写英文字母组成
+     */
+    public String[][] partition_dp(String s) {
+        int n = s.length();
+        //动态规划，dp[i][j]表示s[i...j]是否为回文
+        boolean[][] dp = new boolean[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j >= 0; j--) {
+                if (s.charAt(i) == s.charAt(j) && (i - j <= 1 || dp[i - 1][j + 1]))
+                    dp[i][j] = true;
+            }
+        }
+        List<List<String>> res = new ArrayList<>();
+        List<String> path = new ArrayList<>();
+        backtrack1(res, path, s, dp, 0);
+        String[][] result = new String[res.size()][];
+        for (int i = 0; i < res.size(); i++) {
+            result[i] = res.get(i).toArray(new String[0]);
+        }
+        return result;
+    }
+
+    private void backtrack1(List<List<String>> lists, List<String> list,
+                            String s, boolean[][] dp, int start) {
+        if (start == s.length()) {
+            lists.add(List.copyOf(list));
+            return;
+        }
+        for (int end = start; end < s.length(); end++) {
+            //如果s[start,end]为回文
+            if (dp[start][end]) {
+                //subString方法取左闭右开区间
+                list.add(s.substring(start, end + 1));
+                //传递end+1,避免重叠
+                backtrack1(lists, list, s, dp, end + 1);
+                list.remove(list.size() - 1);
+            }
+        }
+    }
+
+    public String[][] partition(String s) {
+        List<List<String>> res = new ArrayList<>();
+        List<String> path = new ArrayList<>();
+        backtrack(res,path,s,0);
+        String[][] result = new String[res.size()][];
+        for (int i = 0; i < res.size(); i++) {
+            result[i] = res.get(i).toArray(new String[0]);
+        }
+        return result;
+    }
+
+    private void backtrack(List<List<String>> lists, List<String> list,
+                           String s, int start) {
+        if (start == s.length()) {
+            lists.add(List.copyOf(list));
+            return;
+        }
+        for (int i = start; i < s.length(); i++) {
+            String subString = s.substring(start, i + 1);
+            if (isPalindrome(subString)) {
+                list.add(subString);
+                backtrack(lists, list, s, i + 1);
+                list.remove(list.size() - 1);
+            }
+        }
     }
 }
