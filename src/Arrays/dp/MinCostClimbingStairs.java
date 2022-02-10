@@ -1,4 +1,4 @@
-package Arrays;
+package Arrays.dp;
 
 /**
  * leetcode:爬楼梯的最小成本
